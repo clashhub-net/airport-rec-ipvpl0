@@ -1,49 +1,193 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>机场推荐与代理工具 - ClashHub</title>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="机场推荐与代理工具完全指南，深度解析VLESS/Trojan/Hysteria2等协议，提供Clash分流规则、订阅转换工具、流媒体解锁评测，助您找到最稳定的科学上网方案。">
+<meta name="keywords" content="机场推荐,代理协议对比,VLESS,Trojan,Hysteria2,Clash规则,订阅转换,流媒体解锁,科学上网,机场排名">
+<meta name="author" content="ClashHub">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="机场推荐与代理工具完全指南 - ClashHub">
+<meta property="og:description" content="优质机场推荐 + 代理协议深度解析 + Clash工具箱，VLESS/Trojan/Hysteria2 协议对比与实战配置。">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<title>机场推荐与代理工具完全指南 - VLESS/Trojan/Hysteria2协议解析 | ClashHub</title>
 <style>
-:root{--bg:#0f172a;--c:#1e293b;--a:#38bdf8;--t:#e2e8f0;--m:#94a3b8}
-body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--t);padding:2rem}
-.l{max-width:900px;margin:0 auto}
-h1{color:var(--a);margin-bottom:.5rem}
-.s{color:var(--m);margin-bottom:2rem}
-.n{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
-a{color:var(--a);text-decoration:none;padding:.5rem 1rem;background:var(--c);border-radius:8px;font-size:.85rem}
-a:hover{background:#334155}
-.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin:2rem 0}
-.card{background:var(--c);border-radius:12px;padding:1.5rem;border:1px solid #334155}
-.card h3{color:var(--a);margin-bottom:.5rem}
-.card p{color:var(--m);font-size:.85rem;line-height:1.6}
-table{width:100%;border-collapse:collapse;background:var(--c);border-radius:12px;overflow:hidden;border:1px solid #334155}
-th,td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid #334155}
-th{color:var(--a)}
+:root{--bg:#0a0e1a;--card:#111827;--border:#1f2937;--accent:#a78bfa;--accent2:#f472b6;--text:#f1f5f9;--muted:#94a3b8;--green:#4ade80;--yellow:#fbbf24;--red:#f87171}
+body{font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.8}
+.c{max-width:960px;margin:0 auto;padding:2rem 1.5rem}
+header{text-align:center;padding:3rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2rem}
+h1{font-size:2rem;color:var(--accent);margin-bottom:.5rem}
+.sub{color:var(--muted);margin-bottom:1.5rem}
+.tags{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.tag{background:var(--card);border:1px solid var(--border);color:var(--accent);padding:.2rem .75rem;border-radius:50px;font-size:.78rem}
+.btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.2rem;border-radius:8px;font-size:.85rem;text-decoration:none;transition:all .2s;font-weight:500}
+.btn-p{background:var(--accent);color:#000}.btn-p:hover{background:#c4b5fd}
+.btn-s{background:var(--card);color:var(--accent);border:1px solid var(--border)}.btn-s:hover{border-color:var(--accent)}
+section{margin-bottom:2.5rem}
+h2{font-size:1.3rem;color:var(--accent);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--border)}
+h3{font-size:1.1rem;color:var(--accent2);margin:1.5rem 0 .75rem}
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;background:var(--card)}
+th,td{padding:.7rem 1rem;text-align:left;border-bottom:1px solid var(--border);font-size:.88rem}
+th{color:var(--accent);font-weight:600;background:#0f172a;white-space:nowrap}
 tr:last-child td{border-bottom:none}
-.ft{text-align:center;color:var(--m);font-size:.8rem;margin-top:3rem;padding-top:1rem;border-top:1px solid #1e293b}
-</style></head><body>
-<div class=l>
-<h1>机场推荐与代理工具导航</h1>
-<p class=s>ClashHub · 精选优质节点</p>
-<div class=n>
-<a href="https://clashhub.net">ClashHub</a>
-<a href="https://nav.clashvip.net">导航站</a>
-<a href="https://vpsvip.net">VPS推荐</a>
-<a href="https://bbs.clashhub.net">论坛</a>
-<a href="https://clash-for-windows.net">Clash下载</a>
+tr:hover td{background:#1a2332}
+.stars{color:var(--yellow);letter-spacing:-1px}
+pre{background:#0d1117;border:1px solid var(--border);border-radius:12px;padding:1.25rem;overflow-x:auto;font-size:.82rem;line-height:1.7;color:#e6edf3;margin:1rem 0;position:relative}
+code{font-family:'Fira Code',monospace;font-size:.85em}
+pre code{color:#e6edf3}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin:1rem 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:all .2s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card-icon{font-size:1.8rem;margin-bottom:.4rem}
+.card-name{font-weight:600;margin-bottom:.3rem;font-size:.9rem}
+.card-desc{color:var(--muted);font-size:.78rem}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:.75rem;overflow:hidden}
+.faq-q{padding:.85rem 1.25rem;font-weight:600;color:var(--accent);cursor:pointer;font-size:.92rem;display:flex;justify-content:space-between}
+.faq-a{padding:0 1.25rem .85rem;color:var(--muted);font-size:.85rem;line-height:1.8;display:none}
+.faq-item.open .faq-a{display:block}
+footer{text-align:center;padding:2rem 0;border-top:1px solid var(--border);margin-top:3rem;color:var(--muted);font-size:.82rem}
+footer a{color:var(--accent);text-decoration:none}
+footer a:hover{text-decoration:underline}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+@media(max-width:600px){h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<div class="c">
+<header>
+  <h1>📡 机场推荐与代理工具完全指南</h1>
+  <p class="sub">VLESS · Trojan · Hysteria2 协议解析 + Clash规则 + 订阅转换工具</p>
+  <div class="tags">
+    <span class="tag">机场推荐</span><span class="tag">VLESS</span><span class="tag">Trojan</span><span class="tag">Hysteria2</span><span class="tag">Clash规则</span><span class="tag">订阅转换</span>
+  </div>
+  <div class="btns">
+    <a href="https://clashhub.net" class="btn btn-p">🏠 ClashHub 规则集</a>
+    <a href="https://nav.clashvip.net" class="btn btn-s">🧭 导航站</a>
+    <a href="https://vpsvip.net" class="btn btn-s">🖥️ VPS选购</a>
+  </div>
+</header>
+
+<section>
+  <h2>🌐 机场 vs 自建 VPS</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>对比项</th><th>机场</th><th>自建 VPS</th></tr></thead>
+      <tbody>
+        <tr><td><strong>价格</strong></td><td>¥15-50/月</td><td>$3-10/月</td></tr>
+        <tr><td><strong>上手难度</strong></td><td>零配置，订阅即用</td><td>需选购、安装、维护</td></tr>
+        <tr><td><strong>稳定性</strong></td><td>依赖机场商诚信</td><td>完全自主可控</td></tr>
+        <tr><td><strong>抗封锁</strong></td><td>中等</td><td>较高</td></tr>
+        <tr><td><strong>适用场景</strong></td><td>日常浏览、视频、游戏</td><td>高性能需求、建站</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:1rem;color:var(--muted);font-size:.9rem">💡 <strong>建议</strong>：日常使用选优质机场；技术能力强/需要高自由度选 VPS；两者结合为最佳方案。</p>
+</section>
+
+<section>
+  <h2>🔐 代理协议深度解析</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>协议</th><th>速度</th><th>稳定性</th><th>抗封锁</th><th>配置难度</th><th>推荐场景</th></tr></thead>
+      <tbody>
+        <tr><td><strong>VLESS + XTLS</strong></td><td><span class="stars">⭐⭐⭐⭐⭐</span></td><td><span class="stars">⭐⭐⭐⭐</span></td><td><span class="stars">⭐⭐⭐⭐</span></td><td>中等</td><td>主流推荐</td></tr>
+        <tr><td><strong>Trojan</strong></td><td><span class="stars">⭐⭐⭐⭐</span></td><td><span class="stars">⭐⭐⭐⭐</span></td><td><span class="stars">⭐⭐⭐⭐</span></td><td>中等</td><td>深度伪装</td></tr>
+        <tr><td><strong>Hysteria2</strong></td><td><span class="stars">⭐⭐⭐⭐⭐</span></td><td><span class="stars">⭐⭐⭐</span></td><td><span class="stars">⭐⭐⭐⭐</span></td><td>较复杂</td><td>高带宽/4K视频</td></tr>
+        <tr><td><strong>VMess</strong></td><td><span class="stars">⭐⭐⭐</span></td><td><span class="stars">⭐⭐⭐</span></td><td><span class="stars">⭐⭐⭐</span></td><td>中等</td><td>通用场景</td></tr>
+        <tr><td><strong>Shadowsocks</strong></td><td><span class="stars">⭐⭐⭐</span></td><td><span class="stars">⭐⭐⭐</span></td><td><span class="stars">⭐⭐</span></td><td>简单</td><td>备选/轻度</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>⭐ 优质机场推荐标准</h2>
+  <div class="card-grid">
+    <div class="card"><div class="card-icon">📡</div><div class="card-name">线路类型</div><div class="card-desc">IPLC/IEPL专线优先<br>入口优化次之</div></div>
+    <div class="card"><div class="card-icon">🌍</div><div class="card-name">节点数量</div><div class="card-desc">至少10+节点<br>覆盖主要地区</div></div>
+    <div class="card"><div class="card-icon">📊</div><div class="card-name">月流量</div><div class="card-desc">最低300GB/月<br>建议500GB+</div></div>
+    <div class="card"><div class="card-icon">🔐</div><div class="card-name">协议支持</div><div class="card-desc">必须VLESS/Trojan<br>Hy2加分</div></div>
+    <div class="card"><div class="card-icon">💰</div><div class="card-name">退款政策</div><div class="card-desc">24-48小时<br>退款保证</div></div>
+    <div class="card"><div class="card-icon">🏆</div><div class="card-name">口碑历史</div><div class="card-desc">运营1年以上<br>无跑路记录</div></div>
+  </div>
+  <h3>⚠️ 警惕！这类机场不要买</h3>
+  <div style="background:rgba(248,113,113,.1);border:1px solid var(--red);border-radius:10px;padding:1rem;margin:1rem 0">
+    <p style="color:var(--red);margin-bottom:.5rem">❌ 月付价格低于 ¥10 且自称"高速"的</p>
+    <p style="color:var(--red);margin-bottom:.5rem">❌ 只支持 SS/SSR 协议的（已被深度识别）</p>
+    <p style="color:var(--red);margin-bottom:.5rem">❌ 无退款政策、运营不到半年的</p>
+    <p style="color:var(--red);margin-bottom:.5rem">❌ 限制同时在线设备数的</p>
+    <p style="color:var(--red)">❌ 节点 IP 段被大量封禁的</p>
+  </div>
+</section>
+
+<section>
+  <h2>🛠️ 工具箱使用</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>文件</th><th>说明</th><th>适用场景</th></tr></thead>
+      <tbody>
+        <tr><td><code>sub-convert.py</code></td><td>订阅解析/过滤/格式转换</td><td>节点筛选</td></tr>
+        <tr><td><code>rules.yaml</code></td><td>Clash分流规则</td><td>全局规则管理</td></tr>
+        <tr><td><code>adblock.txt</code></td><td>广告+追踪器域名黑名单</td><td>广告屏蔽</td></tr>
+        <tr><td><code>direct.txt</code></td><td>国内直连域名列表</td><td>优化国内访问</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>📊 订阅转换命令</h3>
+  <pre><code># 解析订阅为 Clash 格式
+python3 sub-convert.py --url "你的订阅链接" --format clash
+
+# 关键词过滤
+python3 sub-convert.py --url "你的订阅链接" --keyword "US" --format clash</code></pre>
+</section>
+
+<section>
+  <h2>📋 分流规则使用指南</h2>
+  <p style="color:var(--muted);margin-bottom:1rem">Clash 的分流规则从上到下逐一匹配，<strong>第一个命中的规则决定走哪个出口</strong>。</p>
+  <h3>推荐规则顺序</h3>
+  <pre><code># 1. 广告拦截（节省流量）
+- DOMAIN-SUFFIX,doubleclick.net,REJECT
+
+# 2. 国内直连（节省代理流量）
+- DOMAIN-SUFFIX,cn,DIRECT
+- DOMAIN-SUFFIX,baidu.com,DIRECT
+- IP-CIDR,10.0.0.0/8,DIRECT
+- GEOIP,CN,DIRECT
+
+# 3. 流媒体优先匹配
+- DOMAIN-SUFFIX,netflix.com,Netflix
+- DOMAIN-SUFFIX,youtube.com,YouTube
+
+# 4. 默认代理
+- MATCH,Proxy</code></pre>
+</section>
+
+<section>
+  <h2>❓ 常见问题</h2>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Q1: 节点延迟低但速度慢是怎么回事？<span>▼</span></div>
+    <div class="faq-a">延迟(ping)≠带宽(speed)。可能是：机场入口带宽小、晚高峰多人使用、机场限速策略。<strong>建议同时测试多个节点的带宽表现。</strong></div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Q2: 如何判断机场是否跑路前兆？<span>▼</span></div>
+    <div class="faq-a">🚨 警惕：突然无法访问官网、无法充值、客服消失、节点数量急剧减少、价格异常涨价。<strong>长用机场建议保留备用方案。</strong></div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Q3: Clash Premium 和 Clash Meta 有什么区别？<span>▼</span></div>
+    <div class="faq-a">Clash Meta（MetaCubeX维护）支持更多新协议（Hy2/TUIC），社区活跃，规则支持脚本扩展。<strong>推荐使用 Clash Verge 或 Stash（基于 Meta）。</strong></div>
+  </div>
+</section>
+
+<footer>
+  <p>由 <a href="https://clashhub.net">ClashHub</a> 维护 · 更新时间：{TODAY}</p>
+  <p style="margin-top:.5rem"><a href="https://clashhub.net">规则集</a> · <a href="https://nav.clashvip.net">导航站</a> · <a href="https://vpsvip.net">VPS推荐</a> · <a href="https://bbs.clashhub.net">论坛</a></p>
+</footer>
 </div>
-<div class=g>
-<div class=card><h3>订阅转换</h3><p>解析、过滤、格式转换</p><code>sub-convert.py</code></div>
-<div class=card><h3>分流规则</h3><p>广告屏蔽/国内直连/流媒体</p><code>rules.yaml</code></div>
-<div class=card><h3>广告黑名单</h3><p>广告+追踪器域名</p><code>adblock.txt</code></div>
-<div class=card><h3>直连域名</h3><p>国内CDN优化</p><code>direct.txt</code></div>
-</div>
-<h2 style="color:var(--a);margin:1.5rem 0 1rem">协议对比</h2>
-<table>
-<tr><th>协议</th><th>速度</th><th>稳定性</th><th>抗封锁</th><th>推荐度</th></tr>
-<tr><td>Shadowsocks</td><td>3星</td><td>3星</td><td>2星</td><td>3星</td></tr>
-<tr><td>VMess</td><td>3星</td><td>3星</td><td>3星</td><td>3星</td></tr>
-<tr><td>VLESS+XTLS</td><td>5星</td><td>4星</td><td>4星</td><td>5星</td></tr>
-<tr><td>Trojan</td><td>4星</td><td>4星</td><td>4星</td><td>4星</td></tr>
-<tr><td>Hysteria2</td><td>5星</td><td>3星</td><td>4星</td><td>4星</td></tr>
-</table>
-<p class=ft>ClashHub · <a href="https://clashhub.net" style="color:var(--a)">clashhub.net</a></p>
-</div></body></html>
+<script>
+document.querySelectorAll('.faq-q').forEach(q => q.addEventListener('click', () => q.closest('.faq-item').classList.toggle('open')));
+</script>
+</body>
+</html>
