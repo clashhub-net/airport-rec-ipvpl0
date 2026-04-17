@@ -1,4 +1,4 @@
-# 国内直连域名 - ClashHub - 2026-04-17
+# 国内直连域名 - ClashHub
 
 # 搜索引擎
 baidu.com
@@ -31,4 +31,3 @@ youku.com
 aliyun.com
 bcebos.com
 cloud.tencent.com
-qingcloud.com
